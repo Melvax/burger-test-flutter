@@ -9,7 +9,6 @@ Future<dynamic> fetchBurgers() async {
   log(response.statusCode.toString());
 
   if (response.statusCode == 200) {
-    // dynamic jsonString = jsonDecode(response.body);
     var burgerList = burgerDataFromJson(response.body);
     log(burgerList[0].price.toString());
 

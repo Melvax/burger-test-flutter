@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:burger/models/burgers.dart';
 import 'package:flutter/material.dart';
 
@@ -22,9 +24,6 @@ class CustomQuantity extends StatefulWidget {
 }
 
 class _CustomQuantityState extends State<CustomQuantity> {
-  // int quantity ;
-  // print()
-
   Widget showWidget(int qty) {
     if (qty == 0) {
       return TextButton(
@@ -70,11 +69,10 @@ class _CustomQuantityState extends State<CustomQuantity> {
 
   @override
   Widget build(BuildContext context) {
-    // print(widget.ordersRefs);
-    print(widget.burger.ref);
+    log(widget.burger.ref);
     var foundElements = widget.burgersSelected.where((e) => e == widget.burger);
-    print(foundElements.length);
-    print("occurences top");
+    (foundElements.length);
+    log("occurences top");
 
     return Card(
       color: Colors.yellow.shade700,

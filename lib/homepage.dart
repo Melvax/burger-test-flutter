@@ -6,7 +6,6 @@ import 'package:burger/utils/bottomsheet.dart';
 import 'package:burger/utils/colors.dart';
 import 'package:burger/utils/quantity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -30,7 +29,7 @@ class _HomepageState extends State<Homepage> {
   void _toCart() {
     buildGenericBottomSheet(
         context,
-        Container(
+        SizedBox(
           height: 350,
           child: Container(),
         ));
@@ -42,24 +41,21 @@ class _HomepageState extends State<Homepage> {
     setState(() {
       currentBurger = selected;
     });
-    // return currentBurger;
   }
 
   addToCart() {
     orders.add(currentBurger.ref);
     burgersSelected.add(currentBurger);
     setState(() {});
-    // return currentBurger;
   }
 
   removeInCart() {
-    print("removeinCart");
+    log("removeinCart");
     orders.remove(currentBurger.ref);
     burgersSelected.remove(currentBurger);
-    print(burgersSelected);
+    log(burgersSelected.toString());
 
     setState(() {});
-    // return currentBurger;
   }
 
   @override

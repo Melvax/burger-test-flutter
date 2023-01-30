@@ -1,7 +1,5 @@
 import 'package:burger/homepage.dart';
 
-import 'package:intl/intl.dart';
-
 import 'package:burger/models/burgers.dart';
 import 'package:burger/utils/burger_api.dart';
 import 'package:flutter/material.dart';
@@ -36,27 +34,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // late List<BurgerData> burgers;
   late BurgerData currentBurger;
   late List orders = [];
   late List burgersSelected = [];
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var f = NumberFormat("####,##", "en");
-
     return FutureBuilder(
-        future: fetchBurgers(),
-        builder: (context, snapshot) {
-          if (snapshot.data == null) {
-            //<-- Add this condition
-            return Scaffold(
-              backgroundColor: Colors.white,
-              body: Center(child: CircularProgressIndicator()),
-            );
-          } else {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
+      future: fetchBurgers(),
+      builder: (context, snapshot) {
+        if (snapshot.data == null) {
+          return const Scaffold(
+            backgroundColor: Colors.white,
+            body: Center(child: CircularProgressIndicator()),
+          );
+        } else {
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) {
               Navigator.push<void>(
                 context,
                 MaterialPageRoute<void>(
@@ -65,10 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               );
-            });
-            return Container();
-          }
-        });
+            },
+          );
+          return Container();
+        }
+      },
+    );
   }
 }
 
